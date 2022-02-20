@@ -12,6 +12,9 @@
     <!-- Main css -->
     <link rel="stylesheet" href="<?= base_url('assets/colorlib/'); ?>css/style.css">
 
+    <!-- Link icon bar -->
+    <link rel="icon" href="<?= base_url('assets/img/icon-stis.png'); ?>" type="image/x-icon">
+
     <!-- jQuery -->
     <script src="<?= base_url('assets/'); ?>plugins/jquery/jquery-3.4.1.min.js"></script>
 </head>

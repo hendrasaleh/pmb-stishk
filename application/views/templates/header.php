@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Icon -->
-  <link rel="shortcut icon" href="<?= base_url('assets/'); ?>img/icon.png">
+  <link rel="shortcut icon" href="<?= base_url('assets/'); ?>img/icon-stis.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
