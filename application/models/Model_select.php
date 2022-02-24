@@ -9,21 +9,21 @@ Class Model_select extends CI_Model
 
     function Level_dua($id)
     {
-        $this->db->where('province_id', $id);
-        $this->db->order_by('id', 'ASC');
-        return $this->db->from('reg_regencies')->get()->result();
+        $this->db->where('id_induk_wilayah', $id);
+        $this->db->order_by('id_wil', 'ASC');
+        return $this->db->from('data_wilayah_new')->get()->result();
     }
     function Level_tiga($id)
     {
-        $this->db->where('regency_id', $id);
-        $this->db->order_by('id', 'ASC');
-        return $this->db->from('reg_districts')->get()->result();
+        $this->db->where('id_induk_wilayah', $id);
+        $this->db->order_by('id_wil', 'ASC');
+        return $this->db->from('data_wilayah_new')->get()->result();
     }
     function Level_empat($id)
     {
-        $this->db->where('district_id', $id);
-        $this->db->order_by('id', 'ASC');
-        return $this->db->from('reg_villages')->get()->result();
+        $this->db->where('id_induk_wilayah', $id);
+        $this->db->order_by('id_wil', 'ASC');
+        return $this->db->from('data_wilayah_new')->get()->result();
     }
 
     function Pilih_pengajar($id)

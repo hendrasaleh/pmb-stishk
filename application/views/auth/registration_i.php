@@ -40,7 +40,7 @@
                                     <select name="provinsi" id="provinsi">
                                         <option value="">--Pilih Provinsi--</option>
                                         <?php foreach ($wilayah as $wil) : ?>
-                                          <option value="<?= $wil['id']; ?>"><?= $wil['name']; ?></option>
+                                          <option value="<?= $wil['id_wil']; ?>"><?= $wil['nm_wil']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
@@ -64,15 +64,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="desa">Desa :</label>
-                                <div class="form-select">
+                                <input type="text" name="desa" id="desa" value="<?= set_value('desa'); ?>" placeholder="Masukkan nama desa" required>
+                                <!-- <div class="form-select">
                                     <select name="desa" id="desa"></select>
                                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="asal_sekolah">Asal Sekolah :</label>
-                            <input type="text" name="asal_sekolah" id="asal_sekolah" value="<?= set_value('asal_sekolah'); ?>" required/>
+                            <input type="text" name="asal_sekolah" id="asal_sekolah" value="<?= set_value('asal_sekolah'); ?>" placeholder="Misal : SMAN 1 Kuningan" required/>
                         </div>
                         <div class="form-group">
                             <label for="kelas">Program Studi Pilihan:</label>
@@ -141,7 +142,7 @@
                 var i;
 
                 for(i=0; i<data.length; i++){
-                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                    html += '<option value='+data[i].id_wil+'>'+data[i].nm_wil+'</option>';
                 }
                 $('#kabupaten').html(html);
 
@@ -166,7 +167,7 @@
                 var i;
 
                 for(i=0; i<data.length; i++){
-                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                    html += '<option value='+data[i].id_wil+'>'+data[i].nm_wil+'</option>';
                 }
                 $('#kecamatan').html(html);
 
@@ -190,7 +191,7 @@
                 var i;
 
                 for(i=0; i<data.length; i++){
-                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                    html += '<option value='+data[i].id_wil+'>'+data[i].nm_wil+'</option>';
                 }
                 $('#desa').html(html);
 

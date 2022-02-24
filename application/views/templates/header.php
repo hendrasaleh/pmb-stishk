@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>dist/css/adminlte.min.css">
+  <!-- Profile style -->
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>dist/css/profile.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- jQuery -->
