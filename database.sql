@@ -91798,7 +91798,9 @@ CREATE TABLE `user_detail` (
   `alamat_kerja` text DEFAULT NULL,
   `penghasilan` int(11) DEFAULT NULL,
   `reff` varchar(255) DEFAULT NULL,
-  `date_modified` int(11) DEFAULT NULL
+  `date_modified` int(11) DEFAULT NULL,
+  `nama_ibu` varchar(255) DEFAULT NULL,
+  `agama` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
