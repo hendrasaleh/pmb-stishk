@@ -57,7 +57,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Alamat Lengkap</label>
                         <div class="col-sm-8">
-                            <textarea name="visi" id="visi" class="form-control font-weight-bold" rows="5"><?= strtoupper($users['alamat']).', DESA '.strtoupper($desa['name']).', KECAMATAN '.strtoupper($kec['name']).', '.strtoupper($kab['name']).', PROVINSI '.strtoupper($prov['name']); ?></textarea>
+                            <textarea name="visi" id="visi" class="form-control font-weight-bold" rows="5"><?= empty($users['alamat']) ? "" : strtoupper($users['alamat']).', '; ?>DESA <?= strtoupper($desa['name']).', KECAMATAN '.strtoupper($kec['name']).', '.strtoupper($kab['name']).', PROVINSI '.strtoupper($prov['name']); ?></textarea>
                         </div>
                     </div>
                 </div>

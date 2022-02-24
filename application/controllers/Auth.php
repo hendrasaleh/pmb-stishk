@@ -61,16 +61,16 @@ class Auth extends CI_Controller
 						redirect('user');
 						} else {
 							$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Akun anda belum aktif. Silakan konfirmasi ke admin.</div>');
-						redirect('user/edit');
+						redirect('user/profile');
 						}
 				}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password salah!</div>');
-			redirect('auth');
+			redirect('auth/login');
 				}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Akun belum terdaftar!</div>');
-			redirect('auth');
+			redirect('auth/login');
 		}
 	}
 
@@ -80,8 +80,9 @@ class Auth extends CI_Controller
 			redirect('user');
 		}
 
-		$this->db->order_by('name');
-		$data['wilayah'] = $this->db->get('reg_provinces')->result_array();
+		$this->db->where('id_level_wil', 1);
+		$this->db->order_by('nm_wil');
+		$data['wilayah'] = $this->db->get('data_wilayah_new')->result_array();
 
 		$this->db->select('*');
 		$this->db->from('rumah_quran');
@@ -112,6 +113,11 @@ class Auth extends CI_Controller
 		$this->load->view('templates/auth_footer_i');
 		} else {
 			$email = $this->input->post('email');
+			if ($this->input->post('j_kelamin') == 1) {
+				$image = 'default1.png';
+			} else {
+				$image = 'default2.jpeg';
+			}
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
@@ -122,7 +128,7 @@ class Auth extends CI_Controller
 				'district_id' => $this->input->post('kecamatan'),
 				'village_id' => $this->input->post('desa'),
 				'asal_sekolah' => $this->input->post('asal_sekolah'),
-				'image' => 'default.jpg',
+				'image' => $image,
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
 				'is_active' => 0,
