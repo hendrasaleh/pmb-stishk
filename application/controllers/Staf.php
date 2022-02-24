@@ -322,17 +322,20 @@ class Staf extends CI_Controller
 		$data['title'] = 'Kelola Peserta';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.is_active AS active, kelas.jenis_kelamin AS jenis_kelamin, rumah_quran.nama_rq AS nama_rq, program.nama_program AS program, reg_regencies.name AS regency, reg_provinces.name AS province');
+		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.is_active AS active, kelas.jenis_kelamin AS jenis_kelamin, rumah_quran.nama_rq AS nama_rq, program.nama_program AS program');
 		$this->db->from('user');
 		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
 		$this->db->join('rumah_quran', 'kelas.rq_id = rumah_quran.id');
 		$this->db->join('program', 'kelas.prog_id = program.prog_id');
-		$this->db->join('reg_regencies', 'user.regency_id = reg_regencies.id');
-		$this->db->join('reg_provinces', 'user.province_id = reg_provinces.id');
 		$this->db->where('user.role_id =', 3);
 		$this->db->order_by('user.name', 'ASC');
 		$data['users'] = $this->db->get()->result_array();
-		
+
+		$data['detail'] = $this->db->get_where('user_detail', ['email' => $data['users']['email']])->row_array();
+		$data['prov'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['users']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['users']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['users']['district_id']])->row_array();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('templates/sidebar', $data);

@@ -36,10 +36,9 @@ class User extends CI_Controller
 
 		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
-		$data['prov'] = $this->db->get_where('reg_provinces', ['id' => $data['user']['province_id']])->row_array();
-		$data['kab'] = $this->db->get_where('reg_regencies', ['id' => $data['user']['regency_id']])->row_array();
-		$data['kec'] = $this->db->get_where('reg_districts', ['id' => $data['user']['district_id']])->row_array();
-		$data['desa'] = $this->db->get_where('reg_villages', ['id' => $data['user']['village_id']])->row_array();
+		$data['prov'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['district_id']])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);

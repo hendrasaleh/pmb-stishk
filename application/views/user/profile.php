@@ -1,426 +1,214 @@
-<div class="content-wrapper">
-	<section class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-					<h1><?= $title; ?></h1>
-				</div>
-				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Beranda</a></li>
-						<li class="breadcrumb-item active"><?= $title; ?></li>
-					</ol>
-				</div>
-			</div>
-		</div>
-		<!-- /.container-fluid -->
-		<div class="row">
-			<div class="col-lg-6">
-				<?= $this->session->flashdata('message'); ?>
-			</div>
-		</div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1><?= $title; ?></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Beranda</a></li>
+              <li class="breadcrumb-item active"><?= $title; ?></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+      <div class="row">
+        <div class="col-lg-6">
+          <?= $this->session->flashdata('message'); ?>
+        </div>
+      </div>
     </section>
-	<section class="content">
-		<div class="row gutters-sm">
-			<div class="col-md-4 mb-2">
-				<div class="card">
-					<div class="card-body">
-						<div class="d-flex flex-column align-items-center text-center">
-							<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="Admin" class="rounded-circle" width="150">
-							<div class="mt-3">
-								<h4><?= $user['name']; ?></h4>
-								<hr>
-								<p class="text-secondary mb-1"><?= $user['nama_program']; ?></p>
-								<p class="text-muted font-size-sm">
-									<?= strtoupper($kab['name']) . ' - ' . strtoupper($prov['name']); ?>
-								</p>
-								<!-- <button class="btn btn-primary">Follow</button>
-								<button class="btn btn-outline-primary">Message</button> -->
-							</div>
-						</div>
-					</div>
+	<!-- <h3 class="form-control"><strong></strong></h3> -->
+    <!-- Main content -->
+    <section class="content">
+    	<div class="card mb-3 col-md-6">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
 				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="card mb-2">
+				<div class="col-md-8">
 					<div class="card-body">
-						<div class="row mt-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Nama Lengkap</h6>
-							</div>
-							<div class="col-sm-5 text-secondary"><?= ucwords(strtolower($user['name'])); ?>
-							</div>
-							<div class="col-sm-2">
-								<h6 class="mb-0">Agama</h6>
-							</div>
-							<div class="col-sm-2 text-secondary">
-								<?php
-									switch ($detail['agama']) {
-										case '1':
-											echo 'Islam';
-											break;
-										case '2':
-											echo 'Kristen';
-											break;
-										case '3':
-											echo 'Katholik';
-											break;
-										case '4':
-											echo 'Hindu';
-											break;
-										case '5':
-											echo 'Budha';
-											break;
-										case '6':
-											echo 'Konghucu';
-											break;
-										case '98':
-											echo 'Tidak diisi';
-											break;
-										
-										default:
-											echo 'Lainnya';
-											break;
-									}
-								 ?>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Jenis Kelamin</h6>
-							</div>
-							<div class="col-sm-9 text-secondary"><?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?></div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">No. Handphone (WA)</h6>
-							</div>
-							<div class="col-sm-9 text-secondary"><?= $user['email']; ?></div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Tempat dan tanggal lahir</h6>
-							</div>
-							<div class="col-sm-9 text-secondary"><?= $detail['tempat_lahir'] == NULL ? 'Belum diisi' : strtoupper($detail['tempat_lahir']) . ", " . strtoupper(tanggal_indo(date('Y-m-d', $detail['tgl_lahir']))); ?></div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Nama Ibu Kandung</h6>
-							</div>
-							<div class="col-sm-9 text-secondary"><?= $detail['nama_ibu'] == NULL ? 'Belum diisi' : $detail['nama_ibu']; ?></div>
-						</div>
-						<hr>
+						<h5 class="card-title"><?= $user['name']; ?></h5>
+						<p class="card-text">
+							<?= $user['email']; ?>
+							<br>
+						</p>
+						<p class="card-text">
+							<?= strtoupper($user['nama_program']); ?>
+							<br>
+							<?= $kab['nm_wil'] . ' - ' . strtoupper($prov['nm_wil']); ?>
+							<br>
+							Status : <?= $user['is_active'] == 1 ? "Aktif" : "Tidak aktif"; ?>
+						</p>
+						<p class="card-text"><small class="text-muted">Tanggal daftar : <?= tanggal_indo(date('Y-m-d', $user['date_created'])); ?></small></p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row gutters-sm">
-			<div class="col-sm mb-3">
-				<div class="card card-orange card-outline card-tabs">
-					<div class="card-header p-0 pt-1 border-bottom-0">
-						<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true"><h6>Alamat</h6></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false"><h6>Orang tua</h6></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false"><h6>Wali</h6></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false"><h6>Kebutuhan khusus</h6></a>
-							</li>
-						</ul>
-					</div>
-					<div class="card-body">
-						<div class="tab-content" id="custom-tabs-three-tabContent">
-							<div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Kewarganegaraan</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NIK</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NISN</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NPWP</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Jalan</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Dusun</h6>
-									</div>
-									<div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">RT</h6>
-									</div>
-									<div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">RW</h6>
-									</div>
-									<div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Kelurahan/Desa</h6>
-									</div>
-									<div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">Kode Pos</h6>
-									</div>
-									<div class="col-sm-3 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Kecamatan</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Jenis Tinggal</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Alat Transportasi</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Telepon</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Email</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Penerima KPS ?</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-							</div>
-							<div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="bg-secondary mb-0"><strong>Ayah</strong></h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NIK</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NISN</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">NPWP</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Jalan</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Dusun</h6>
-									</div>
-									<div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">RT</h6>
-									</div>
-									<div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">RW</h6>
-									</div>
-									<div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Kelurahan/Desa</h6>
-									</div>
-									<div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-									<div class="col-sm-1">
-										<h6 class="mb-0">Kode Pos</h6>
-									</div>
-									<div class="col-sm-3 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Kecamatan</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Jenis Tinggal</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Alat Transportasi</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Telepon</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Email</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-2">
-										<h6 class="mb-0">Penerima KPS ?</h6>
-									</div>
-									<div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
-									</div>
-								</div>
-								<hr> 
-							</div>
-							<div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
-								Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
-							</div>
-							<div class="tab-pane fade" id="custom-tabs-three-settings" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
-								Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
-							</div>
-						</div>
-					</div>
-					<!-- /.card -->
-				</div>
+		<div class="card">
+			<div class="card-header">
+				<h5><strong>DATA MAHASISWA</strong></h5>
 			</div>
-		</div>
-		<div class="row gutters-sm">
-			<div class="col-sm-6 mb-3">
-				<div class="card h-100">
-					<div class="card-body">
-						<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-						<small>Web Design</small>
-						<div class="progress mb-3" style="height: 5px">
-							<div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+	        <div class="card-body">
+	        	<?php if ($user['is_active'] == 0) : ?>
+	        	<div class="row">
+	        		<div class="card text-dark bg-warning mb-3 col-md-6">
+						<div class="card-header">PERINGATAN</div>
+						<div class="card-body">
+							<h5 class="card-title"><strong>AKUN ANDA BELUM AKTIF</strong></h5>
+							<p class="card-text">Untuk melanjutkan proses pendaftaran calon mahasiswa, silakan lakukan pembayaran ke BANK Muamalat, nomor rekening: 1320014633 atas nama STIS Husnul Khotimah</p>
 						</div>
-						<small>Website Markup</small>
-						<div class="progress mb-3" style="height: 5px">
-							<div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small>One Page</small>
-						<div class="progress mb-3" style="height: 5px">
-							<div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small>Mobile Template</small>
-						<div class="progress mb-3" style="height: 5px">
-							<div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small>Backend API</small>
-						<div class="progress mb-3" style="height: 5px">
-							<div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+	        	</div>
+	        	<div class="row">
+					<div class="col-2">
+						<a href="https://api.whatsapp.com/send/?phone=6289509848439&text=Assalamu'alaykum. Saya sudah transfer untuk biaya pendaftaran ke STISHK Kuningan." target="_blank"><button class="btn btn-info btn-block">Saya sudah transfer</button></a>
+					</div>
+				</div>
+	        	<?php else : ?>
+	        	<div class="row">
+					<div class="card mb-3 col-md-6">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title"><?= $user['name']; ?></h5>
+									<p class="card-text">
+										<?= $user['email']; ?>
+										<br>
+									</p>
+									<p class="card-text">
+										<?= strtoupper($user['nama_program']); ?>
+										<br>
+										<?= $kab['nm_wil'] . ' - ' . strtoupper($prov['nm_wil']); ?>
+										<br>
+										Status : <?= $user['is_active'] == 1 ? "Aktif" : "Tidak aktif"; ?>
+									</p>
+									<p class="card-text"><small class="text-muted">Tanggal daftar : <?= tanggal_indo(date('Y-m-d', $user['date_created'])); ?></small></p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-</div>
+				<?php endif; ?>
+	        </div>
+	        <div class="card-footer">
+	        	<div class="form-group row">
+					<div class="col-sm-9">
+						<small>Last Modified: <?= tanggal_indo(date('Y-m-d',$detail['date_modified'])) . " " . date('H:m:s', $detail['date_modified']); ?></small>
+					</div>
+				</div>
+	        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<script>
+    $("#provinsi").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var id_provinsi = $("#provinsi").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_kab",
+            method : "POST",
+            data : {id_provinsi:id_provinsi},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Kabupaten--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#kabupaten').html(html);
+
+            }
+        });
+    });
+
+    $("#kabupaten").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var id_kabupaten = $("#kabupaten").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_kec",
+            method : "POST",
+            data : {id_kabupaten:id_kabupaten},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Kecamatan--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#kecamatan').html(html);
+
+            }
+        });
+    });
+    $("#kecamatan").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var id_kecamatan = $("#kecamatan").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_desa",
+            method : "POST",
+            data : {id_kecamatan:id_kecamatan},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Desa--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].name+'</option>';
+                }
+                $('#desa').html(html);
+
+            }
+        });
+    });
+    $("#j_kelamin").change(function(){
+
+        // variabel dari nilai combo box kendaraan
+        var jenis_kelamin = $("#j_kelamin").val();
+
+        // Menggunakan ajax untuk mengirim dan dan menerima data dari server
+        $.ajax({
+            url : "<?php echo base_url();?>/auth/get_ketua",
+            method : "POST",
+            data : {jenis_kelamin:jenis_kelamin},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = "<option value=''>--Pilih Murobbi/ah--</option>";
+                var i;
+
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].upa_id+'>'+data[i].nama_ketua+'</option>';
+                }
+                $('#nama_ketua').html(html);
+
+            }
+        });
+    });
+</script>
+
