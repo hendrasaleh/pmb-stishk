@@ -26,30 +26,6 @@
 	<!-- <h3 class="form-control"><strong></strong></h3> -->
     <!-- Main content -->
     <section class="content">
-    	<div class="card mb-3 col-md-6">
-			<div class="row g-0">
-				<div class="col-md-4">
-					<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title"><?= $user['name']; ?></h5>
-						<p class="card-text">
-							<?= $user['email']; ?>
-							<br>
-						</p>
-						<p class="card-text">
-							<?= strtoupper($user['nama_program']); ?>
-							<br>
-							<?= $kab['nm_wil'] . ' - ' . strtoupper($prov['nm_wil']); ?>
-							<br>
-							Status : <?= $user['is_active'] == 1 ? "Aktif" : "Tidak aktif"; ?>
-						</p>
-						<p class="card-text"><small class="text-muted">Tanggal daftar : <?= tanggal_indo(date('Y-m-d', $user['date_created'])); ?></small></p>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="card">
 			<div class="card-header">
 				<h5><strong>DATA MAHASISWA</strong></h5>

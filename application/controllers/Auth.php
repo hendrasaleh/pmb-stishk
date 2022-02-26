@@ -119,7 +119,7 @@ class Auth extends CI_Controller
 				$image = 'default2.jpeg';
 			}
 			$data = [
-				'name' => htmlspecialchars($this->input->post('name', true)),
+				'name' => strtoupper(htmlspecialchars($this->input->post('name', true))),
 				'email' => htmlspecialchars($email),
 				'gender' => $this->input->post('j_kelamin'),
 				'kelas_id' => $this->input->post('kelas'),

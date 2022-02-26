@@ -26,16 +26,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="Admin" class="rounded-circle" width="150">
+                            <img src="<?= base_url('assets/img/profile/') . $users['image']; ?>" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4><?= $user['name']; ?></h4>
+                                <h4><?= $users['name']; ?></h4>
                                 <hr>
-                                <p class="text-secondary mb-1"><?= $user['nama_program']; ?></p>
+                                <p class="text-secondary mb-1"><?= $users['nama_program']; ?></p>
                                 <p class="text-muted font-size-sm">
-                                    <?= strtoupper($kab['name']) . ' - ' . strtoupper($prov['name']); ?>
+                                    <?= strtoupper($kab['nm_wil']) . ' - ' . strtoupper($prov['nm_wil']); ?>
                                 </p>
-                                <!-- <button class="btn btn-primary">Follow</button>
-                                <button class="btn btn-outline-primary">Message</button> -->
                             </div>
                         </div>
                     </div>
@@ -48,7 +46,7 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Nama Lengkap</h6>
                             </div>
-                            <div class="col-sm-5 text-secondary"><?= ucwords(strtolower($user['name'])); ?>
+                            <div class="col-sm-5 text-secondary"><?= ucwords(strtolower($users['name'])); ?>
                             </div>
                             <div class="col-sm-2">
                                 <h6 class="mb-0">Agama</h6>
@@ -90,14 +88,14 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Jenis Kelamin</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary"><?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?></div>
+                            <div class="col-sm-9 text-secondary"><?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?></div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">No. Handphone (WA)</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary"><?= $user['email']; ?></div>
+                            <div class="col-sm-9 text-secondary"><?= $users['email']; ?></div>
                         </div>
                         <hr>
                         <div class="row">
@@ -144,7 +142,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Kewarganegaraan</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -152,7 +150,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NIK</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -160,7 +158,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NISN</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -168,7 +166,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NPWP</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -176,7 +174,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Jalan</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -184,17 +182,17 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Dusun</h6>
                                     </div>
-                                    <div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-6 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">RT</h6>
                                     </div>
-                                    <div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-1 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">RW</h6>
                                     </div>
-                                    <div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-1 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -202,12 +200,12 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Kelurahan/Desa</h6>
                                     </div>
-                                    <div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-6 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">Kode Pos</h6>
                                     </div>
-                                    <div class="col-sm-3 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-3 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -215,7 +213,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Kecamatan</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -223,7 +221,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Jenis Tinggal</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -231,7 +229,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Alat Transportasi</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -239,7 +237,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Telepon</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -247,7 +245,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -255,7 +253,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Penerima KPS ?</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -263,9 +261,7 @@
                             <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <h6 class="bg-secondary mb-0"><strong>Ayah</strong></h6>
-                                    </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                        <h5 class="mb-0"><strong>Ayah</strong></h5>
                                     </div>
                                 </div>
                                 <hr>
@@ -273,7 +269,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NIK</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -281,7 +277,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NISN</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -289,7 +285,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">NPWP</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -297,7 +293,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Jalan</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -305,17 +301,17 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Dusun</h6>
                                     </div>
-                                    <div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-6 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">RT</h6>
                                     </div>
-                                    <div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-1 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">RW</h6>
                                     </div>
-                                    <div class="col-sm-1 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-1 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -323,12 +319,12 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Kelurahan/Desa</h6>
                                     </div>
-                                    <div class="col-sm-6 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-6 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                     <div class="col-sm-1">
                                         <h6 class="mb-0">Kode Pos</h6>
                                     </div>
-                                    <div class="col-sm-3 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-3 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -336,7 +332,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Kecamatan</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -344,7 +340,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Jenis Tinggal</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -352,7 +348,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Alat Transportasi</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -360,7 +356,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Telepon</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -368,7 +364,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -376,7 +372,7 @@
                                     <div class="col-sm-2">
                                         <h6 class="mb-0">Penerima KPS ?</h6>
                                     </div>
-                                    <div class="col-sm-10 ">: <?= $user['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
+                                    <div class="col-sm-10 ">: <?= $users['gender'] == 1 ? 'Laki-laki' : 'Perempuan'; ?>
                                     </div>
                                 </div>
                                 <hr> 
