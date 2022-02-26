@@ -148,40 +148,6 @@
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
-
-    $('.form-check-input').on('click', function() {
-      const menuId = $(this).data('menu');
-      const roleId = $(this).data('role');
-
-      $.ajax({
-        url: "<?= base_url('admin/changeaccess') ?>",
-        type: 'post',
-        data: {
-          menuId: menuId,
-          roleId: roleId
-        },
-        success: function() {
-          document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
-        }
-      })
-    });
-
-    $('.form-check-group').on('click', function() {
-      const userId = $(this).data('member');
-      const groupId = $(this).data('group');
-
-      $.ajax({
-        url: "<?= base_url('kurikulum/addgroup') ?>",
-        type: 'post',
-        data: {
-          userId: userId,
-          groupId: groupId
-        },
-        success: function() {
-          document.location.href = "<?= base_url('kurikulum/assignuser/'); ?>" + userId;
-        }
-      })
-    });
   </script>
   
   

@@ -27,12 +27,18 @@ class User extends CI_Controller
 	{
 		$data['title'] = 'Profil Saya';
 
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
+		$this->db->join('program', 'kelas.prog_id = program.prog_id');
+		$this->db->where('user.email', $this->session->userdata('email'));
+		$data['user'] = $this->db->get()->row_array();
+
+		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
-		$data['prov'] = $this->db->get_where('reg_provinces', ['id' => $data['user']['province_id']])->row_array();
-		$data['kab'] = $this->db->get_where('reg_regencies', ['id' => $data['user']['regency_id']])->row_array();
-		$data['kec'] = $this->db->get_where('reg_districts', ['id' => $data['user']['district_id']])->row_array();
-		$data['desa'] = $this->db->get_where('reg_villages', ['id' => $data['user']['village_id']])->row_array();
+		$data['prov'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['user']['district_id']])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);

@@ -322,17 +322,16 @@ class Staf extends CI_Controller
 		$data['title'] = 'Kelola Peserta';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.is_active AS active, kelas.jenis_kelamin AS jenis_kelamin, rumah_quran.nama_rq AS nama_rq, program.nama_program AS program, reg_regencies.name AS regency, reg_provinces.name AS province');
+		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.is_active AS active, kelas.jenis_kelamin AS jenis_kelamin, program.nama_program AS program, data_kabupaten.nm_wil AS kabupaten, data_provinsi.nm_wil AS provinsi');
 		$this->db->from('user');
 		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
-		$this->db->join('rumah_quran', 'kelas.rq_id = rumah_quran.id');
 		$this->db->join('program', 'kelas.prog_id = program.prog_id');
-		$this->db->join('reg_regencies', 'user.regency_id = reg_regencies.id');
-		$this->db->join('reg_provinces', 'user.province_id = reg_provinces.id');
+		$this->db->join('data_kabupaten', 'user.regency_id = data_kabupaten.id_wil');
+		$this->db->join('data_provinsi', 'user.province_id = data_provinsi.id_wil');
 		$this->db->where('user.role_id =', 3);
 		$this->db->order_by('user.name', 'ASC');
 		$data['users'] = $this->db->get()->result_array();
-		
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -345,12 +344,18 @@ class Staf extends CI_Controller
 	{
 		$data['title'] = 'Detail Peserta';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['users'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
+		$this->db->join('program', 'kelas.prog_id = program.prog_id');
+		$this->db->where('user.id', $id);
+		$data['users'] = $this->db->get()->row_array();
+
 		$data['detail'] = $this->db->get_where('user_detail', ['email' => $data['users']['email']])->row_array();
-		$data['prov'] = $this->db->get_where('reg_provinces', ['id' => $data['users']['province_id']])->row_array();
-		$data['kab'] = $this->db->get_where('reg_regencies', ['id' => $data['users']['regency_id']])->row_array();
-		$data['kec'] = $this->db->get_where('reg_districts', ['id' => $data['users']['district_id']])->row_array();
-		$data['desa'] = $this->db->get_where('reg_villages', ['id' => $data['users']['village_id']])->row_array();
+		$data['prov'] = $this->db->get_where('data_provinsi', ['id_wil' => $data['users']['province_id']])->row_array();
+		$data['kab'] = $this->db->get_where('data_kabupaten', ['id_wil' => $data['users']['regency_id']])->row_array();
+		$data['kec'] = $this->db->get_where('data_wilayah_new', ['id_wil' => $data['users']['district_id']])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/topbar', $data);

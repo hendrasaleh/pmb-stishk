@@ -48,7 +48,7 @@
   				      <th scope="row"><?= $i; ?></th>
   				      <td><?= $users['name']; ?></td>
                 <td><?= $users['email']; ?></td>
-  				      <td><?= $users['regency'] . ", " . $users['province']; ?></td>
+  				      <td><?= $users['kabupaten'] . ", " . $users['provinsi']; ?></td>
                 <td><?= $users['program'] . " - " . $users['jenis_kelamin']; ?></td>
   				      <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td>
   				      <td>
