@@ -34,7 +34,8 @@
   				      <th scope="col">Nama</th>
                 <th scope="col">No. Handphone</th>
   				      <th scope="col">Alamat Asal</th>
-                <th scope="col">Prodi - Tingkat</th>
+                <th scope="col">Program Studi</th>
+                <th scope="col">Referensi</th>
   				      <th scope="col">Status</th>
   				      <th scope="col">Action</th>
   				    </tr>
@@ -46,11 +47,19 @@
   				  	?>
   				    <tr>
   				      <th scope="row"><?= $i; ?></th>
-  				      <td><?= $users['name']; ?></td>
+  				      <td><?= ucwords(strtolower($users['name'])); ?></td>
                 <td><?= $users['email']; ?></td>
   				      <td><?= $users['kabupaten'] . ", " . $users['provinsi']; ?></td>
-                <td><?= $users['program'] . " - " . $users['jenis_kelamin']; ?></td>
-  				      <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td>
+                <td><?= $users['program'] == 'HK' ? 'HKI' : 'HES'; ?></td>
+                <td><?= $users['reff']; ?></td>
+                <td>
+                  <?php if ($users['active'] == 1) : ?>
+                    <span class="badge badge-success"><i class="fas fa-thumbs-up"></i></span>
+                  <?php else : ?>
+                    <span class="badge badge-danger"><i class="fas fa-times"></i></span>
+                  <?php endif; ?>
+                </td>
+  				      <!-- <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td> -->
   				      <td>
                     <a href="<?= base_url('staf/viewuser/') . $users['user_id']; ?>" class="badge badge-info">detail</a>
   				      		<a href="manageuser/<?= $users['user_id']; ?>" class="badge badge-success">edit</a>
