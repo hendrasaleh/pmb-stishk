@@ -132,13 +132,13 @@ class Auth extends CI_Controller
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
 				'is_active' => 0,
+				'reff' => htmlspecialchars($this->input->post('reff', true)),
 				'date_created' => time(),
 				'date_modified' => time()
 			];
 
 			$data2 = [
 				'email' => htmlspecialchars($email),
-				'reff' => htmlspecialchars($this->input->post('reff', true)),
 				'date_modified' => time()
 			];
 
