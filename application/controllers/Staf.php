@@ -58,7 +58,7 @@ class Staf extends CI_Controller
 				'regency_id' => $this->input->post('kabupaten')
 			];
 
-			$this->db->insert('rumah_quran	', $data);
+			$this->db->insert('rumah_quran', $data);
 			$this->session->set_flashdata('message', '<div class="alert col-sm-6 alert-success" role="alert"> Data berhasi ditambahkan.</div>');
 			redirect("staf/datarq");
 		}
