@@ -26,6 +26,11 @@
 		    <div class="col-lg">
 
 		  		<?= $this->session->flashdata('message'); ?>
+          <div class="row">
+            <div class="col-sm-6">
+              <a href="<?= base_url('export/datapendaftar'); ?>" class="btn btn-info mb-3">Unduh Data Pendaftar</a>
+            </div>
+          </div>
 
 		  		<table id="example1" class="table table-hover">
   				  <thead>
@@ -54,9 +59,9 @@
                 <td><?= $users['reff']; ?></td>
                 <td>
                   <?php if ($users['active'] == 1) : ?>
-                    <span class="badge badge-success"><i class="fas fa-thumbs-up"></i></span>
+                    <span class="badge badge-success">OK <i class="fas fa-thumbs-up"></i></span>
                   <?php else : ?>
-                    <span class="badge badge-danger"><i class="fas fa-times"></i></span>
+                    <span class="badge badge-danger">NO <i class="fas fa-times"></i></span>
                   <?php endif; ?>
                 </td>
   				      <!-- <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td> -->
