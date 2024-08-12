@@ -43,7 +43,7 @@
                 <th scope="col">Program Studi</th>
                 <th scope="col">Referensi</th>
   				      <th scope="col">Status</th>
-  				      <th scope="col" style="width: 8%">Action</th>
+  				      <th scope="col" style="width: 10%">Action</th>
   				    </tr>
   				  </thead>
   				  <tbody>
