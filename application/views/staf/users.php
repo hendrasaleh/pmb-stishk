@@ -37,12 +37,13 @@
   				    <tr>
   				      <th scope="col">#</th>
   				      <th scope="col">Nama</th>
+                <th scope="col">L/P</th>
                 <th scope="col">No. Handphone</th>
   				      <th scope="col">Alamat Asal</th>
                 <th scope="col">Program Studi</th>
                 <th scope="col">Referensi</th>
   				      <th scope="col">Status</th>
-  				      <th scope="col">Action</th>
+  				      <th scope="col" style="width: 8%">Action</th>
   				    </tr>
   				  </thead>
   				  <tbody>
@@ -53,24 +54,25 @@
   				    <tr>
   				      <th scope="row"><?= $i; ?></th>
   				      <td><?= ucwords(strtolower($users['name'])); ?></td>
+                <td><?= $users['jenis_kelamin'] == 0 ? "P" : "L"; ?></td>
                 <td><?= $users['email']; ?></td>
-  				      <td><?= $users['kabupaten'] . ", " . $users['provinsi']; ?></td>
+  				      <td><?= $users['kabupaten']; ?></td>
                 <td><?= $users['program'] == 'HK' ? 'HKI' : 'HES'; ?>
                     <?= $users['kip'] == 1 ? " - KIP" : ""; ?>
                 </td>
                 <td><?= $users['reff']; ?></td>
                 <td>
                   <?php if ($users['active'] == 1) : ?>
-                    <span class="badge badge-success">OK <i class="fas fa-thumbs-up"></i></span>
+                    <span class="btn btn-flat btn-xs btn-success"><i class="fa-fw fas fa-check"></i></span>
                   <?php else : ?>
-                    <span class="badge badge-danger">NO <i class="fas fa-times"></i></span>
+                    <span class="btn btn-flat btn-xs btn-danger"><i class="fa-fw fas fa-times"></i></span>
                   <?php endif; ?>
                 </td>
   				      <!-- <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td> -->
   				      <td>
-                    <a href="<?= base_url('staf/viewuser/') . $users['user_id']; ?>" class="badge badge-info">detail</a>
-  				      		<a href="manageuser/<?= $users['user_id']; ?>" class="badge badge-success">edit</a>
-  				      		<a href="javascript:hapusData(<?= $users['user_id']; ?>)" class="badge badge-danger">delete</a>
+                    <a href="<?= base_url('staf/viewuser/') . $users['user_id']; ?>" class="btn btn-info btn-xs btn-flat"><i class="fas fa-edit"></i></a>
+  				      		<a href="manageuser/<?= $users['user_id']; ?>" class="btn btn-success btn-xs btn-flat"><i class="fas fa-eye"></i></a>
+  				      		<a href="javascript:hapusData(<?= $users['user_id']; ?>)" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash"></i></a>
   				      </td>
   				    </tr>
   					<?php

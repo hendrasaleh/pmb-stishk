@@ -322,7 +322,7 @@ class Staf extends CI_Controller
 		$data['title'] = 'Kelola Peserta';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.date_created, user.is_active AS active, user.reff AS reff, user.kip AS kip, kelas.jenis_kelamin AS jenis_kelamin, program.kode_program AS program, data_kabupaten.nm_wil AS kabupaten, data_provinsi.nm_wil AS provinsi');
+		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.date_created, user.is_active AS active, user.reff AS reff, user.kip AS kip, user.gender AS jenis_kelamin, program.kode_program AS program, data_kabupaten.nm_wil AS kabupaten, data_provinsi.nm_wil AS provinsi');
 		$this->db->from('user');
 		// $this->db->join('user_detail', 'user.email = user_detail.email');
 		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
@@ -331,6 +331,7 @@ class Staf extends CI_Controller
 		$this->db->join('data_provinsi', 'user.province_id = data_provinsi.id_wil');
 		$this->db->where('user.role_id =', 3);
 		$this->db->where('user.date_created >', 1696775191);
+		$this->db->order_by('user.is_active', 'DESC');
 		$this->db->order_by('user.date_created', 'ASC');
 		$data['users'] = $this->db->get()->result_array();
 
