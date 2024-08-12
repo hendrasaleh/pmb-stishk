@@ -8,15 +8,17 @@
                 <div class="signup-form">
                     <form method="POST" action="<?= base_url('auth/registration'); ?>" class="register-form" id="register-form">
                         <h2>Form Pendaftaran Calon Mahasiswa</h2>
+                        <?= form_error('kip', '<p class="text-danger pl-3">', '</p>'); ?>
+                        <?= form_error('password1', '<p class="text-danger pl-3">', '</p>'); ?>
+                        <?= form_error('name', '<p class="text-danger pl-3">', '</p>'); ?>
+                        <?= form_error('email', '<p class="text-danger pl-3">', '</p>'); ?>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap :</label>
-                            <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <input type="text" name="name" id="name" value="<?= set_value('name'); ?>" required/>
                             </div>
                             <div class="form-group">
                                 <label for="email">No. Handphone (WA) :</label>
-                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <input type="text" name="email" id="email" value="<?= set_value('email'); ?>" required/>
                             </div>
                         </div>
@@ -75,6 +77,19 @@
                             <label for="asal_sekolah">Asal Sekolah :</label>
                             <input type="text" name="asal_sekolah" id="asal_sekolah" value="<?= set_value('asal_sekolah'); ?>" placeholder="Misal : SMAN 1 Kuningan" required/>
                         </div>
+                        <div class="form-radio">
+                            <label for="j_kelamin" class="radio-label">Daftar Jalur Beasiswa KIP ?</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="kip" id="yes" value="1">
+                                <label for="yes">Ya</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="kip" id="no" value="0">
+                                <label for="no">Tidak</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="kelas">Program Studi Pilihan:</label>
                             <div class="form-select">
@@ -94,7 +109,6 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="password1">Kata Sandi :</label>
-                            <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <input type="password" name="password1" id="password1" placeholder="Masukkan kata sandi baru" required/>
                             </div>
                             <div class="form-group">
