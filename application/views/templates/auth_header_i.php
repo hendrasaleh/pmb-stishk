@@ -17,5 +17,14 @@
 
     <!-- jQuery -->
     <script src="<?= base_url('assets/'); ?>plugins/jquery/jquery-3.4.1.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-65NBJSK4R9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-65NBJSK4R9');
+    </script>
 </head>
 <body>

@@ -32,7 +32,7 @@
             </div>
           </div>
 
-		  		<table id="example1" class="table table-hover">
+		  		<table id="example1" class="table table-hover" data-page-length="50">
   				  <thead>
   				    <tr>
   				      <th scope="col">#</th>
@@ -55,7 +55,9 @@
   				      <td><?= ucwords(strtolower($users['name'])); ?></td>
                 <td><?= $users['email']; ?></td>
   				      <td><?= $users['kabupaten'] . ", " . $users['provinsi']; ?></td>
-                <td><?= $users['program'] == 'HK' ? 'HKI' : 'HES'; ?></td>
+                <td><?= $users['program'] == 'HK' ? 'HKI' : 'HES'; ?>
+                    <?= $users['kip'] == 1 ? " - KIP" : ""; ?>
+                </td>
                 <td><?= $users['reff']; ?></td>
                 <td>
                   <?php if ($users['active'] == 1) : ?>
