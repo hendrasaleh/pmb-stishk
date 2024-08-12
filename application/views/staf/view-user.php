@@ -19,6 +19,11 @@
                 <?= $this->session->flashdata('message'); ?>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="<?= base_url('staf/users'); ?>" class="btn btn-success mb-3">Kembali</a>
+          </div>
+      </div>
     </section>
     <section class="content">
         <div class="row gutters-sm">
@@ -389,7 +394,7 @@
                 </div>
             </div>
         </div>
-        <div class="row gutters-sm">
+        <!-- <div class="row gutters-sm">
             <div class="col-sm-6 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
@@ -417,6 +422,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 </div>

@@ -23,6 +23,14 @@ function is_logged_in()
 	}
 }
 
+function _protect()
+{
+	$ci = get_instance();
+	if (!$ci->session->userdata('email')) {
+		redirect ('auth');
+	}
+}
+
 function check_access($role_id, $menu_id)
 {
 	$ci = get_instance();
