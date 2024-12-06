@@ -36,7 +36,8 @@
   				  <thead>
   				    <tr>
   				      <th scope="col">#</th>
-  				      <th scope="col">Nama</th>
+  				      <th scope="col">Tanggal</th>
+                <th scope="col">Nama</th>
                 <th scope="col">L/P</th>
                 <th scope="col">No. Handphone</th>
   				      <th scope="col">Alamat Asal</th>
@@ -53,6 +54,7 @@
   				  	?>
   				    <tr>
   				      <th scope="row"><?= $i; ?></th>
+                <td><?= date('d-m-Y', $users['date_created']); ?></td>
   				      <td><?= ucwords(strtolower($users['name'])); ?></td>
                 <td><?= $users['jenis_kelamin'] == 0 ? "P" : "L"; ?></td>
                 <td><?= $users['email']; ?></td>

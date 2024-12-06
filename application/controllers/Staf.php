@@ -332,7 +332,7 @@ class Staf extends CI_Controller
 		$this->db->where('user.role_id =', 3);
 		$this->db->where('user.date_created >', 1696775191);
 		$this->db->order_by('user.is_active', 'DESC');
-		$this->db->order_by('user.date_created', 'ASC');
+		$this->db->order_by('user.date_created', 'DESC');
 		$data['users'] = $this->db->get()->result_array();
 
 		$this->load->view('templates/header', $data);
