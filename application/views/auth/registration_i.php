@@ -77,19 +77,19 @@
                             <label for="asal_sekolah">Asal Sekolah :</label>
                             <input type="text" name="asal_sekolah" id="asal_sekolah" value="<?= set_value('asal_sekolah'); ?>" placeholder="Misal : SMAN 1 Kuningan" required/>
                         </div>
-                        <div class="form-radio">
-                            <label for="j_kelamin" class="radio-label">Daftar Jalur Beasiswa KIP ?</label>
-                            <div class="form-radio-item">
-                                <input type="radio" name="kip" id="yes" value="1">
-                                <label for="yes">Ya</label>
-                                <span class="check"></span>
-                            </div>
-                            <div class="form-radio-item">
-                                <input type="radio" name="kip" id="no" value="0">
-                                <label for="no">Tidak</label>
-                                <span class="check"></span>
-                            </div>
-                        </div>
+                        <!--<div class="form-radio">-->
+                        <!--    <label for="j_kelamin" class="radio-label">Daftar Jalur Beasiswa KIP ?</label>-->
+                        <!--    <div class="form-radio-item">-->
+                        <!--        <input type="radio" name="kip" id="yes" value="1">-->
+                        <!--        <label for="yes">Ya</label>-->
+                        <!--        <span class="check"></span>-->
+                        <!--    </div>-->
+                        <!--    <div class="form-radio-item">-->
+                        <!--        <input type="radio" name="kip" id="no" value="0">-->
+                        <!--        <label for="no">Tidak</label>-->
+                        <!--        <span class="check"></span>-->
+                        <!--    </div>-->
+                        <!--</div>-->
                         <div class="form-group">
                             <label for="kelas">Program Studi Pilihan:</label>
                             <div class="form-select">
