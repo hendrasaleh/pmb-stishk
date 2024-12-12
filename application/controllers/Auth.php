@@ -98,7 +98,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
 		$this->form_validation->set_rules('desa', 'Desa', 'required|trim');
 		$this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-		$this->form_validation->set_rules('kip', 'Jalur Beasiswa KIP', 'required|trim', ['required' => 'Pilih jalur beasiswa KIP!']);
+// 		$this->form_validation->set_rules('kip', 'Jalur Beasiswa KIP', 'required|trim', ['required' => 'Pilih jalur beasiswa KIP!']);
 		$this->form_validation->set_rules('email', 'No Handphone', 'required|trim|callback_is_number|is_unique[user.email]', [
 			'is_unique' => "Nomor ini sudah terdaftar!"]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[5]|matches[password2]', [
@@ -129,7 +129,8 @@ class Auth extends CI_Controller
 				'district_id' => $this->input->post('kecamatan'),
 				'village_id' => $this->input->post('desa'),
 				'asal_sekolah' => $this->input->post('asal_sekolah'),
-				'kip' => $this->input->post('kip'),
+				// 'kip' => $this->input->post('kip'),
+				'kip' => 0,
 				'image' => $image,
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
