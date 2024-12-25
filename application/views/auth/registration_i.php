@@ -93,7 +93,7 @@
                         <div class="form-group">
                             <label for="kelas">Program Studi Pilihan:</label>
                             <div class="form-select">
-                                <select name="kelas" id="course">
+                                <select name="kelas" id="course" required>
                                     <option value="">--Pilih Program Studi</option>
                                     <?php foreach ($kelas as $kelas) : ?>
                                       <option value="<?= $kelas['kelas_id']; ?>"><?= $kelas['nama_program']; ?></option>

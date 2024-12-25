@@ -252,6 +252,16 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function is_blank($kolom)
+	{
+		if ($kolom == "") {
+			$this->form_validation->set_message('is_blank', 'Silakan pilih salah satu.');
+                    return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
+
 	function get_kab()
     {
         $id_provinsi=$this->input->post('id_provinsi');
