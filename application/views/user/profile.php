@@ -37,7 +37,7 @@
 						<div class="card-header">PERINGATAN</div>
 						<div class="card-body">
 							<h5 class="card-title"><strong>AKUN ANDA BELUM AKTIF</strong></h5>
-							<p class="card-text">Untuk melanjutkan proses pendaftaran calon mahasiswa, silakan lakukan pembayaran sejumlah Rp. 250.000,- ke BANK Muamalat, nomor rekening: 1320014633 atas nama STIS Husnul Khotimah</p>
+							<p class="card-text">Untuk melanjutkan proses pendaftaran calon mahasiswa, silakan lakukan pembayaran sejumlah Rp. 150.000,- ke BANK Muamalat, nomor rekening: 1320014633 atas nama STIS Husnul Khotimah</p>
 						</div>
 					</div>
 	        	</div>
