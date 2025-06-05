@@ -72,8 +72,8 @@
                 </td>
   				      <!-- <td><?= $users['active'] == 1 ? 'Aktif' : 'Tidak aktif'; ?></td> -->
   				      <td>
-                    <a href="<?= base_url('staf/viewuser/') . $users['user_id']; ?>" class="btn btn-info btn-xs btn-flat"><i class="fas fa-edit"></i></a>
-  				      		<a href="manageuser/<?= $users['user_id']; ?>" class="btn btn-success btn-xs btn-flat"><i class="fas fa-eye"></i></a>
+                    <a href="<?= base_url('staf/viewuser/') . $users['user_id']; ?>" class="btn btn-info btn-xs btn-flat"><i class="fas fa-eye"></i></a>
+  				      		<a href="manageuser/<?= $users['user_id']; ?>" class="btn btn-success btn-xs btn-flat"><i class="fas fa-edit"></i></a>
   				      		<a href="javascript:hapusData(<?= $users['user_id']; ?>)" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash"></i></a>
   				      </td>
   				    </tr>
