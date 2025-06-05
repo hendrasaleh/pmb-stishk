@@ -27,13 +27,14 @@ class Export extends CI_Controller
 		$this->db->join('data_kabupaten', 'user.regency_id = data_kabupaten.id_wil');
 		$this->db->join('data_provinsi', 'user.province_id = data_provinsi.id_wil');
 		$this->db->where('user.role_id =', 3);
+		$this->db->where('user.date_created >', 1726279369);
 		$this->db->order_by('user.is_active', 'DESC');
 		$this->db->order_by('program.kode_program', 'DESC');
 		$this->db->order_by('user.name', 'ASC');
-		$data['users'] = $this->db->get()->result_array();
+		$datamahasiswa = $this->db->get()->result_array();
 
 		// echo "<pre>";
-		// print_r($data['users']);
+		// print_r($datamahasiswa);
 		// echo "</pre>";
 		// die;
 
@@ -74,7 +75,7 @@ class Export extends CI_Controller
 				]
 		];
 
-		$sheet->setCellValue('A1', "DATA CALON MAHASISWA STISHK KUNINGAN TAHUN AKADEMIK 2023-2024"); // Set kolom A1 dengan Judul Tabel
+		$sheet->setCellValue('A1', "DATA CALON MAHASISWA STISHK KUNINGAN TAHUN AKADEMIK 2024-2025"); // Set kolom A1 dengan Judul Tabel
 	    $sheet->mergeCells('A1:L1'); // Set Merge Cell pada kolom A1 sampai F1 (sesuai kebutuhan)
 	    $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
 	    $sheet->getStyle('A1')->applyFromArray($style_head);
@@ -110,19 +111,19 @@ class Export extends CI_Controller
 	    $no = 1;
 	    $numrow = 4; // Set baris pertama untuk tabel adalah baris keempat, karena header diset di baris ke 3
 
-	    foreach($data_pegawai as $dp){ // Lakukan looping pada variabel siswa
+	    foreach($datamahasiswa as $dm){ // Lakukan looping pada variabel siswa
 	    	$sheet->setCellValue('A'.$numrow, $no);
-	    	$sheet->setCellValue('B'.$numrow, html_entity_decode($dp['name'], ENT_QUOTES));
-	    	$sheet->setCellValue('C'.$numrow, "'62" . $dp['email']);
-	    	$sheet->setCellValue('D'.$numrow, $dp['asal_sekolah']);
-	    	$sheet->setCellValue('E'.$numrow, $dp['active']);
-	    	$sheet->setCellValue('F'.$numrow, $dp['reff']);
-	    	$sheet->setCellValue('G'.$numrow, $dp['detail_status_pegawai'] == 1 ? 'Laki-laki' : 'Perempuan');
-	    	$sheet->setCellValue('H'.$numrow, $dp['program']);
-	    	$sheet->setCellValue('I'.$numrow, $dp['desa']);
-	    	$sheet->setCellValue('J'.$numrow, $dp['kecamatan']);
-	    	$sheet->setCellValue('K'.$numrow, $dp['kabupaten']);
-	    	$sheet->setCellValue('L'.$numrow, $dp['provinsi']);
+	    	$sheet->setCellValue('B'.$numrow, html_entity_decode($dm['name'], ENT_QUOTES));
+	    	$sheet->setCellValue('C'.$numrow, "'62" . $dm['email']);
+	    	$sheet->setCellValue('D'.$numrow, $dm['asal_sekolah']);
+	    	$sheet->setCellValue('E'.$numrow, $dm['active'] == 1 ? 'Aktif' : 'Tidak Aktif');
+	    	$sheet->setCellValue('F'.$numrow, $dm['reff']);
+	    	$sheet->setCellValue('G'.$numrow, $dm['jenis_kelamin'] == 1 ? 'Laki-laki' : 'Perempuan');
+	    	$sheet->setCellValue('H'.$numrow, $dm['program']);
+	    	$sheet->setCellValue('I'.$numrow, $dm['desa']);
+	    	$sheet->setCellValue('J'.$numrow, $dm['kecamatan']);
+	    	$sheet->setCellValue('K'.$numrow, $dm['kabupaten']);
+	    	$sheet->setCellValue('L'.$numrow, $dm['provinsi']);
 
 			// Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
 			$sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
