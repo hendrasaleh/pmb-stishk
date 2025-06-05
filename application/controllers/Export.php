@@ -112,9 +112,11 @@ class Export extends CI_Controller
 	    $numrow = 4; // Set baris pertama untuk tabel adalah baris keempat, karena header diset di baris ke 3
 
 	    foreach($datamahasiswa as $dm){ // Lakukan looping pada variabel siswa
+	    	// $nohp = "'".substr_replace($dm['email'], "62", 0, 2);
 	    	$sheet->setCellValue('A'.$numrow, $no);
 	    	$sheet->setCellValue('B'.$numrow, html_entity_decode($dm['name'], ENT_QUOTES));
-	    	$sheet->setCellValue('C'.$numrow, "'62" . $dm['email']);
+	    	// $sheet->setCellValue('C'.$numrow, "'62" . $dm['email']);
+	    	$sheet->setCellValue('C'.$numrow, strval($dm['email']));
 	    	$sheet->setCellValue('D'.$numrow, $dm['asal_sekolah']);
 	    	$sheet->setCellValue('E'.$numrow, $dm['active'] == 1 ? 'Aktif' : 'Tidak Aktif');
 	    	$sheet->setCellValue('F'.$numrow, $dm['reff']);
