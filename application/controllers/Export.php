@@ -163,9 +163,10 @@ class Export extends CI_Controller
 	    $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 	    // Set judul file excel nya
 	    $sheet->setTitle("Data Pendaftar");
+	    $waktu = date('dmY-his', time());
 	    // Proses file excel
 	    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	    header('Content-Disposition: attachment; filename="Data Pendaftar.xlsx"'); // Set nama file excel nya
+	    header('Content-Disposition: attachment; filename="Data Pendaftar '.$waktu.'.xlsx"'); // Set nama file excel nya
 	    header('Cache-Control: max-age=0');
 	    $writer = new Xlsx($spreadsheet);
 	    $writer->save('php://output');
