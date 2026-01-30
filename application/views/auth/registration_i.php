@@ -106,6 +106,18 @@
                             <label for="reff">Dari mana anda mendapat info pendaftaran?</label>
                             <input type="text" name="reff" id="reff" value="<?= set_value('reff'); ?>" placeholder="Misal : Dari teman (Ahmad)">
                         </div>
+                        <div class="form-group">
+                            <label for="tgl_tes">Pilihan Waktu Tes:</label>
+                            <div class="form-select">
+                                <select name="tgl_tes" id="course" required>
+                                    <option value="">--Pilih Waktu Tes</option>
+                                    <option value="2026-04-11">11 April 2026</option>
+                                    <option value="2026-06-13">13 Juni 2026</option>
+                                    <option value="2026-08-22">22 Agustus 2026</option>
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="password1">Kata Sandi :</label>

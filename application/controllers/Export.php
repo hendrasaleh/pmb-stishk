@@ -27,7 +27,7 @@ class Export extends CI_Controller
 		$this->db->join('data_kabupaten', 'user.regency_id = data_kabupaten.id_wil');
 		$this->db->join('data_provinsi', 'user.province_id = data_provinsi.id_wil');
 		$this->db->where('user.role_id =', 3);
-		$this->db->where('user.date_created >', 1726279369);
+		$this->db->where('user.date_created >', strtotime('2025-09-01'));
 		$this->db->order_by('user.is_active', 'DESC');
 		$this->db->order_by('program.kode_program', 'DESC');
 		$this->db->order_by('user.name', 'ASC');
