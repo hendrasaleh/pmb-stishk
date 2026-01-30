@@ -136,6 +136,7 @@ class Auth extends CI_Controller
 				'role_id' => 3,
 				'is_active' => 0,
 				'reff' => htmlspecialchars($this->input->post('reff', true)),
+				'tgl_tes' => $this->input->post('tgl_tes'),
 				'date_created' => time(),
 				'date_modified' => time()
 			];
