@@ -18,7 +18,7 @@ class Export extends CI_Controller
 		$sheet = $spreadsheet->getActiveSheet();
 
 
-		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.asal_sekolah, user.date_created, user.is_active AS active, user.reff AS reff, user.gender AS jenis_kelamin, program.kode_program AS program, user.village_id AS desa, data_wilayah_new.nm_wil AS kecamatan, data_kabupaten.nm_wil AS kabupaten, data_provinsi.nm_wil AS provinsi');
+		$this->db->select('user.id AS user_id, user.email AS email, user.name AS name, user.asal_sekolah, user.date_created, user.is_active AS active, user.reff AS reff, user.tgl_tes AS tgl_tes, user.gender AS jenis_kelamin, program.kode_program AS program, user.village_id AS desa, data_wilayah_new.nm_wil AS kecamatan, data_kabupaten.nm_wil AS kabupaten, data_provinsi.nm_wil AS provinsi');
 		$this->db->from('user');
 		// $this->db->join('user_detail', 'user.email = user_detail.email');
 		$this->db->join('kelas', 'user.kelas_id = kelas.kelas_id');
@@ -87,12 +87,13 @@ class Export extends CI_Controller
 	    $sheet->setCellValue('D3', "ASAL SEKOLAH"); // Set kolom C3 dengan tulisan "ASAL SEKOLAH"
 	    $sheet->setCellValue('E3', "STATUS"); // Set kolom D3 dengan tulisan "STATUS"
 	    $sheet->setCellValue('F3', "REFERENSI"); // Set kolom E3 dengan tulisan "REFERENSI"
-	    $sheet->setCellValue('G3', "JENIS KELAMIM"); // Set kolom E3 dengan tulisan "JENIS KELAMIM"
+	    $sheet->setCellValue('G3', "JENIS KELAMIN"); // Set kolom E3 dengan tulisan "JENIS KELAMIM"
 	    $sheet->setCellValue('H3', "PRODI"); // Set kolom E3 dengan tulisan "PRODI"
-	    $sheet->setCellValue('I3', "DESA"); // Set kolom E3 dengan tulisan "DESA"
-	    $sheet->setCellValue('J3', "KECAMATAN"); // Set kolom E3 dengan tulisan "KECAMATAN"
-	    $sheet->setCellValue('K3', "KABUPATEN"); // Set kolom E3 dengan tulisan "KABUPATEN"
-	    $sheet->setCellValue('L3', "PROVINSI"); // Set kolom E3 dengan tulisan "PROVINSI"
+	    $sheet->setCellValue('I3', "TGL TES"); // Set kolom E3 dengan tulisan "TGL TES"
+	    $sheet->setCellValue('J3', "DESA"); // Set kolom E3 dengan tulisan "DESA"
+	    $sheet->setCellValue('K3', "KECAMATAN"); // Set kolom E3 dengan tulisan "KECAMATAN"
+	    $sheet->setCellValue('L3', "KABUPATEN"); // Set kolom E3 dengan tulisan "KABUPATEN"
+	    $sheet->setCellValue('M3', "PROVINSI"); // Set kolom E3 dengan tulisan "PROVINSI"
 
 	    // Apply style header yang telah kita buat tadi ke masing-masing kolom header
 	    $sheet->getStyle('A3')->applyFromArray($style_col);
@@ -107,6 +108,7 @@ class Export extends CI_Controller
 	    $sheet->getStyle('J3')->applyFromArray($style_col);
 	    $sheet->getStyle('K3')->applyFromArray($style_col);
 	    $sheet->getStyle('L3')->applyFromArray($style_col);
+	    $sheet->getStyle('M3')->applyFromArray($style_col);
 
 	    $no = 1;
 	    $numrow = 4; // Set baris pertama untuk tabel adalah baris keempat, karena header diset di baris ke 3
@@ -122,10 +124,11 @@ class Export extends CI_Controller
 	    	$sheet->setCellValue('F'.$numrow, $dm['reff']);
 	    	$sheet->setCellValue('G'.$numrow, $dm['jenis_kelamin'] == 1 ? 'Laki-laki' : 'Perempuan');
 	    	$sheet->setCellValue('H'.$numrow, $dm['program']);
-	    	$sheet->setCellValue('I'.$numrow, $dm['desa']);
-	    	$sheet->setCellValue('J'.$numrow, $dm['kecamatan']);
-	    	$sheet->setCellValue('K'.$numrow, $dm['kabupaten']);
-	    	$sheet->setCellValue('L'.$numrow, $dm['provinsi']);
+	    	$sheet->setCellValue('I'.$numrow, tanggal_indo($dm['tgl_tes']));
+	    	$sheet->setCellValue('J'.$numrow, $dm['desa']);
+	    	$sheet->setCellValue('K'.$numrow, $dm['kecamatan']);
+	    	$sheet->setCellValue('L'.$numrow, $dm['kabupaten']);
+	    	$sheet->setCellValue('M'.$numrow, $dm['provinsi']);
 
 			// Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
 			$sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -140,6 +143,7 @@ class Export extends CI_Controller
 			$sheet->getStyle('J'.$numrow)->applyFromArray($style_row);
 			$sheet->getStyle('K'.$numrow)->applyFromArray($style_row);
 			$sheet->getStyle('L'.$numrow)->applyFromArray($style_row);
+			$sheet->getStyle('M'.$numrow)->applyFromArray($style_row);
 
 			$no++; // Tambah 1 setiap kali looping
 			$numrow++; // Tambah 1 setiap kali looping
@@ -148,16 +152,17 @@ class Export extends CI_Controller
 		// Set width kolom
 	    $sheet->getColumnDimension('A')->setWidth(5); // Set width kolom A
 	    $sheet->getColumnDimension('B')->setWidth(40); // Set width kolom B
-	    $sheet->getColumnDimension('C')->setWidth(25); // Set width kolom C
+	    $sheet->getColumnDimension('C')->setWidth(13); // Set width kolom C
 	    $sheet->getColumnDimension('D')->setWidth(40); // Set width kolom D
-	    $sheet->getColumnDimension('E')->setWidth(25); // Set width kolom E
+	    $sheet->getColumnDimension('E')->setWidth(10); // Set width kolom E
 	    $sheet->getColumnDimension('F')->setWidth(40); // Set width kolom F
-	    $sheet->getColumnDimension('G')->setWidth(25); // Set width kolom G
-	    $sheet->getColumnDimension('H')->setWidth(20); // Set width kolom H
-	    $sheet->getColumnDimension('I')->setWidth(30); // Set width kolom I
+	    $sheet->getColumnDimension('G')->setWidth(14); // Set width kolom G
+	    $sheet->getColumnDimension('H')->setWidth(7); // Set width kolom H
+	    $sheet->getColumnDimension('I')->setWidth(15); // Set width kolom I
 	    $sheet->getColumnDimension('J')->setWidth(30); // Set width kolom J
 	    $sheet->getColumnDimension('K')->setWidth(30); // Set width kolom K
 	    $sheet->getColumnDimension('L')->setWidth(30); // Set width kolom L
+	    $sheet->getColumnDimension('M')->setWidth(30); // Set width kolom M
 	    
 	    // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
 	    $sheet->getDefaultRowDimension()->setRowHeight(-1);

@@ -39,9 +39,9 @@
   				      <th scope="col">Tanggal</th>
                 <th scope="col">Nama</th>
                 <th scope="col">L/P</th>
-                <th scope="col">No. Handphone</th>
   				      <th scope="col">Alamat Asal</th>
                 <th scope="col">Program Studi</th>
+                <th scope="col">Tanggal Tes</th>
                 <th scope="col">Referensi</th>
   				      <th scope="col">Status</th>
   				      <th scope="col" style="width: 10%">Action</th>
@@ -57,10 +57,10 @@
                 <td><?= date('d-m-Y', $users['date_created']); ?></td>
   				      <td><?= ucwords(strtolower($users['name'])); ?></td>
                 <td><?= $users['jenis_kelamin'] == 0 ? "P" : "L"; ?></td>
-                <td><?= $users['email']; ?></td>
   				      <td><?= $users['kabupaten']; ?></td>
                 <td><?= $users['program'] == 'HK' ? 'HKI' : 'HES'; ?>
                     <?= $users['kip'] == 1 ? " - KIP" : ""; ?>
+                <td><?= tanggal_indo_singkat($users['tgl_tes']); ?></td>
                 </td>
                 <td><?= $users['reff']; ?></td>
                 <td>
