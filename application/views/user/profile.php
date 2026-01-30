@@ -42,9 +42,7 @@
 					</div>
 	        	</div>
 	        	<div class="row">
-					<div class="col-2">
-						<a href="https://api.whatsapp.com/send/?phone=6289509848439&text=Assalamu'alaykum. Saya sudah transfer untuk biaya pendaftaran ke STISHK Kuningan." target="_blank"><button class="btn btn-info btn-block">Saya sudah transfer</button></a>
-					</div>
+					<a href="https://api.whatsapp.com/send/?phone=6289509848439&text=Assalamu'alaykum. Saya sudah transfer untuk biaya pendaftaran ke STISHK Kuningan." target="_blank" class="btn btn-info btn-block col-md-6">Saya sudah transfer</a>  
 				</div>
 	        	<?php else : ?>
 	        	<div class="row">
